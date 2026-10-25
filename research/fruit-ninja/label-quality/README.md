@@ -49,3 +49,20 @@ The command prints a label and **uncalibrated** `p_rotten` score. The final mode
 - [Existing fruit provenance and limitations](../dataset-review/README.md): original source labels are inherited from photographs and the fixed controls are visually reviewed prototype references, not expert-adjudicated cutout truth.
 
 The report's proposed next experiment adds a blind adjudicated holdout and compares game versus untimed annotation on matched training images. This pilot cannot establish the true target-label error rate or a causal effect of the recent UI change.
+
+
+## 100% normal versus 70/30 label mix
+
+The follow-up comparison is in [`results_mix/REPORT.md`](results_mix/REPORT.md). “Normal” means original source-photo labels. Both arms use all 183 kept images before the test-photo exclusion, with identical training identities/row counts per fold. The mixed arm changes only the label source for approximately 30% of rows, selected from non-tied eligible gameplay labels. Repeating 30 predeclared selections measures sensitivity to which gameplay labels enter the mix; the reported mixed score averages the metrics of the separate models and is not an ensemble score.
+
+```sh
+research/fruit-ninja/label-quality/.venv/bin/python research/fruit-ninja/label-quality/run_mixture.py \
+  --snapshot research/fruit-ninja/label-quality/results/snapshot.json \
+  --out research/fruit-ninja/label-quality/results_mix
+
+research/fruit-ninja/label-quality/.venv/bin/python research/fruit-ninja/label-quality/predict.py \
+  --model research/fruit-ninja/label-quality/results_mix/mixed_70_30_gradient_boosting.joblib \
+  backend/assets/fruit_ninja/originals/228792ab5acc5eeea8adff5fb8d668fb.png
+```
+
+`results_mix/normal_gradient_boosting.joblib` and `results_mix/mixed_70_30_gradient_boosting.joblib` are final refits to the full 183-image pool; their in-sample scores are not the held-out evaluation. The final mix is 128 normal / 55 gameplay-origin labels (nearest integer to 70/30), with the first predeclared seed rather than the best seed. The report states how many selected gameplay labels actually disagree with source labels. Full per-fold identities, origin selections, ratios, 30-run scores and reference predictions are retained. This comparison tests label replacement, not adding new images or finding an optimal mixture ratio.

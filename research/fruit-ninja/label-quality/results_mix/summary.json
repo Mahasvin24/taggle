@@ -1,0 +1,67 @@
+{
+  "created_at_utc": "2026-10-25T00:25:08.733167+00:00",
+  "snapshot_sha256": "608efbe30dbee0a0a92578b0ff0f1bfe407c3f6691526c6405bf50e4a827bddc",
+  "sklearn": "1.9.1",
+  "pool_cutouts": 183,
+  "eligible_gameplay_cutouts": 68,
+  "gameplay_ties": 4,
+  "test_reference_cutouts": 91,
+  "test_photos": 28,
+  "mix_runs": 30,
+  "normal": {
+    "accuracy": 0.8681318681318682,
+    "balanced_accuracy": 0.8717948717948718,
+    "photo_balanced_accuracy": 0.7950641025641025,
+    "rotten_recall": 0.8974358974358975,
+    "healthy_recall": 0.8461538461538461,
+    "macro_f1": 0.8668292682926829,
+    "roc_auc": 0.9383629191321499,
+    "confusion_matrix": [
+      [
+        44,
+        8
+      ],
+      [
+        4,
+        35
+      ]
+    ]
+  },
+  "mixture_mean": {
+    "accuracy": 0.8282051282051284,
+    "balanced_accuracy": 0.8297008547008548,
+    "photo_balanced_accuracy": 0.8244871794871796,
+    "rotten_recall": 0.8401709401709403,
+    "healthy_recall": 0.8192307692307692,
+    "macro_f1": 0.8259631409884647,
+    "roc_auc": 0.8968770545693622
+  },
+  "mixture_variation": {
+    "min": 0.7748076923076923,
+    "max": 0.8676923076923078,
+    "std": 0.03030115249726478,
+    "runs_better_than_normal": 24,
+    "runs_equal_to_normal": 0
+  },
+  "uncertainty": {
+    "normal_photo_balanced_accuracy_ci95": [
+      0.6455128205128206,
+      0.9242307692307692
+    ],
+    "mixture_photo_balanced_accuracy_ci95": [
+      0.6743589743589744,
+      0.9512820512820512
+    ],
+    "mixture_minus_normal_photo_balanced_accuracy_ci95": [
+      -0.06506891025641025,
+      0.1564102564102563
+    ],
+    "bootstrap_iterations": 4000,
+    "interpretation": "Paired, class-stratified source-photo bootstrap plus random mix selection; conditional on frozen data and fitted folds, not a population or new-training-data guarantee."
+  },
+  "fold_gameplay_ratio_min": 0.29775280898876405,
+  "fold_gameplay_ratio_max": 0.3028571428571429,
+  "final_normal_rows": 128,
+  "final_gameplay_rows": 55,
+  "final_changed_labels": 18
+}
