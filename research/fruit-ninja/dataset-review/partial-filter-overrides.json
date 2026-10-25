@@ -1,0 +1,82 @@
+{
+  "jujube-fresh-0949-fruit-10": {
+    "decision": "excluded_partial",
+    "reason": "Only the upper part is visible; another fruit hides the lower section."
+  },
+  "pomegranate-fresh-1283-fruit-04": {
+    "decision": "excluded_partial",
+    "reason": "Only a crescent of this fruit is visible between its neighbors."
+  },
+  "strawberry-fresh-1483-fruit-19": {
+    "decision": "excluded_partial",
+    "reason": "A large section of the berry is hidden by neighboring fruit."
+  },
+  "strawberry-fresh-1483-fruit-20": {
+    "decision": "excluded_partial",
+    "reason": "A large section is missing from the middle of the berry's outline."
+  },
+  "strawberry-fresh-1483-fruit-27": {
+    "decision": "excluded_partial",
+    "reason": "Only a triangular portion of the berry is visible."
+  },
+  "strawberry-fresh-1483-fruit-28": {
+    "decision": "excluded_partial",
+    "reason": "A large section of this berry is hidden by its neighbors."
+  },
+  "strawberry-fresh-1483-fruit-29": {
+    "decision": "excluded_partial",
+    "reason": "Only an irregular portion of the berry is visible between other fruit."
+  },
+  "strawberry-fresh-1483-fruit-33": {
+    "decision": "excluded_partial",
+    "reason": "A large section is missing from the middle of the berry's outline."
+  },
+  "strawberry-fresh-1483-fruit-34": {
+    "decision": "excluded_partial",
+    "reason": "Only a short strip of the berry is visible between neighboring fruit."
+  },
+  "strawberry-fresh-1483-fruit-35": {
+    "decision": "excluded_partial",
+    "reason": "Only an irregular fragment of the berry is visible."
+  },
+  "strawberry-fresh-1483-fruit-36": {
+    "decision": "excluded_partial",
+    "reason": "Only the lower triangular portion of the berry is visible."
+  },
+  "strawberry-fresh-1483-fruit-39": {
+    "decision": "excluded_partial",
+    "reason": "A neighboring fruit hides a large part of this berry."
+  },
+  "strawberry-fresh-1483-fruit-40": {
+    "decision": "excluded_partial",
+    "reason": "Only a narrow crescent of the berry remains visible."
+  },
+  "strawberry-fresh-1483-fruit-41": {
+    "decision": "excluded_partial",
+    "reason": "Only a small wedge of this berry is visible between other fruit."
+  },
+  "strawberry-fresh-1483-fruit-43": {
+    "decision": "excluded_partial",
+    "reason": "A large section is missing from the middle of the berry's outline."
+  },
+  "strawberry-fresh-1483-fruit-46": {
+    "decision": "excluded_partial",
+    "reason": "Only a low strip of this berry is visible beneath its neighbors."
+  },
+  "strawberry-fresh-1483-fruit-52": {
+    "decision": "excluded_partial",
+    "reason": "Much of the berry is hidden, leaving a small cut-off section."
+  },
+  "strawberry-fresh-1483-fruit-53": {
+    "decision": "excluded_partial",
+    "reason": "Only an irregular fragment of this berry is visible."
+  },
+  "strawberry-fresh-1483-fruit-65": {
+    "decision": "excluded_partial",
+    "reason": "Only a thin curved strip is visible between neighboring fruit."
+  },
+  "strawberry-fresh-1483-fruit-72": {
+    "decision": "excluded_partial",
+    "reason": "Only a small triangular section of this berry is visible."
+  }
+}

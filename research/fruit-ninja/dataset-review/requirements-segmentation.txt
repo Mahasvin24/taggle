@@ -1,0 +1,6 @@
+torch==2.8.0
+torchvision==0.23.0
+transformers==4.57.1
+opencv-python-headless==4.12.0.88
+scipy==1.16.3
+Pillow==11.3.0

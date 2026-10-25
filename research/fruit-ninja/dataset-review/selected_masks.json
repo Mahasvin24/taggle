@@ -1,0 +1,616 @@
+{
+  "apple-fresh-0017": {
+    "instances": [
+      [
+        1,
+        2
+      ]
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "apple-fresh-0083": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "apple-fresh-0149": {
+    "instances": [
+      0,
+      1,
+      3,
+      4,
+      5,
+      7,
+      10,
+      11,
+      12,
+      14,
+      16,
+      18,
+      21,
+      22,
+      24,
+      25,
+      26
+    ],
+    "coverage": "partial",
+    "notes": "Fruit extracted individually from the pile. Several are occluded or clipped by the original frame; hidden portions are not reconstructed."
+  },
+  "banana-fresh-0217": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "banana-fresh-0283": {
+    "instances": [
+      1,
+      2,
+      4,
+      6,
+      7
+    ],
+    "coverage": "reviewed",
+    "notes": "Five visible bananas separated from the group. One banana touches the original image edge."
+  },
+  "banana-fresh-0349": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "grape-fresh-0417": {
+    "instances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "coverage": "partial",
+    "notes": "Individual grapes, not a bunch. Neighbors hide parts of some outlines; stems are omitted."
+  },
+  "grape-fresh-0483": {
+    "instances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "coverage": "partial",
+    "notes": "Individual visible grapes. Some heavily occluded outlines remain partial; stems are omitted."
+  },
+  "grape-fresh-0549": {
+    "instances": [
+      1,
+      3
+    ],
+    "coverage": "reviewed",
+    "notes": "Two touching grapes separated into two cutouts. Stems are omitted."
+  },
+  "guava-fresh-0617": {
+    "instances": [
+      [
+        0,
+        2,
+        3
+      ]
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "guava-fresh-0683": {
+    "instances": [
+      0,
+      3
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "guava-fresh-0749": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "jujube-fresh-0817": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "jujube-fresh-0883": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "jujube-fresh-0949": {
+    "instances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "coverage": "partial",
+    "notes": "Individual fruit extracted from the group; partially hidden fruit remains partial."
+  },
+  "orange-fresh-1017": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "orange-fresh-1083": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "orange-fresh-1149": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "pomegranate-fresh-1217": {
+    "instances": [
+      {
+        "include": [
+          0
+        ],
+        "exclude": [
+          1
+        ]
+      }
+    ],
+    "coverage": "reviewed",
+    "notes": "A separate shadow proposal was subtracted from the fruit mask. Inspect the dark lower edge before using as a sprite."
+  },
+  "pomegranate-fresh-1283": {
+    "instances": [
+      0,
+      1,
+      2,
+      5,
+      6,
+      8
+    ],
+    "coverage": "partial",
+    "notes": "Separate visible fruit from the pile, including occluded portions. Background and cast shadows were excluded where possible."
+  },
+  "pomegranate-fresh-1349": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "strawberry-fresh-1417": {
+    "instances": [
+      14,
+      26,
+      27,
+      44,
+      55,
+      59
+    ],
+    "coverage": "partial",
+    "notes": "Berry bodies extracted separately. Overlapping leaves obscure portions of the fruit. Some calyx leaves are omitted."
+  },
+  "strawberry-fresh-1483": {
+    "instances": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      46,
+      47,
+      49,
+      50,
+      51,
+      53,
+      54,
+      55,
+      56,
+      58,
+      60,
+      61,
+      62,
+      64,
+      65,
+      67,
+      69,
+      70,
+      72,
+      74,
+      76,
+      79,
+      82,
+      85,
+      86,
+      87,
+      88,
+      89,
+      91,
+      93,
+      94,
+      98,
+      106,
+      109,
+      113,
+      118,
+      124,
+      125,
+      129,
+      135,
+      137,
+      144,
+      149,
+      155,
+      165,
+      168,
+      176,
+      178,
+      203,
+      206,
+      209,
+      214,
+      236,
+      247,
+      253,
+      274,
+      277,
+      289,
+      293,
+      303,
+      304,
+      308,
+      313,
+      325,
+      331,
+      339,
+      342,
+      349
+    ],
+    "coverage": "partial",
+    "notes": "Dense pile: individual visible berry candidates. Occlusion, source-edge clipping, and small image details limit complete instance coverage; inspect before gameplay use."
+  },
+  "strawberry-fresh-1549": {
+    "instances": [
+      [
+        7,
+        0,
+        2,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11
+      ]
+    ],
+    "coverage": "reviewed",
+    "notes": "A single strawberry; its body and attached leaf proposals were combined into one fruit cutout."
+  },
+  "apple-rotten-1617": {
+    "instances": [
+      1,
+      2
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "apple-rotten-1683": {
+    "instances": [
+      1000
+    ],
+    "coverage": "reviewed",
+    "notes": "A box and positive/negative point prompts were used to separate the dark fruit from its cast-shadow tail. Source focus remains soft; inspect the lower boundary."
+  },
+  "apple-rotten-1749": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": "Label inherited as rotten, although damage is not obvious in this view."
+  },
+  "banana-rotten-1817": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "banana-rotten-1883": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "banana-rotten-1949": {
+    "instances": [
+      1,
+      2
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "grape-rotten-2017": {
+    "instances": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "coverage": "partial",
+    "notes": "Individual grapes separated from the group. All inherit the source image label rotten, including greener-looking grapes."
+  },
+  "grape-rotten-2083": {
+    "instances": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11
+    ],
+    "coverage": "partial",
+    "notes": "Individual visible grapes; some shapes are hidden by neighbors. All inherit the source label rotten."
+  },
+  "grape-rotten-2149": {
+    "instances": [
+      1,
+      3,
+      4,
+      5,
+      6
+    ],
+    "coverage": "reviewed",
+    "notes": "Five individual grapes, including the shriveled brown grape. Each inherits rotten."
+  },
+  "guava-rotten-2217": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "guava-rotten-2283": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "guava-rotten-2349": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "jujube-rotten-2417": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "jujube-rotten-2483": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "jujube-rotten-2549": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "orange-rotten-2617": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "orange-rotten-2683": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "orange-rotten-2749": {
+    "instances": [
+      0
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "pomegranate-rotten-2817": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "pomegranate-rotten-2883": {
+    "instances": [
+      {
+        "include": [
+          1
+        ],
+        "exclude": [
+          2
+        ]
+      }
+    ],
+    "coverage": "reviewed",
+    "notes": "A separate cast-shadow mask was subtracted from the fruit."
+  },
+  "pomegranate-rotten-2949": {
+    "instances": [
+      1
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "strawberry-rotten-3017": {
+    "instances": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      29,
+      31,
+      32,
+      33,
+      35,
+      37,
+      39,
+      40,
+      41,
+      43,
+      46,
+      48,
+      49,
+      56,
+      57,
+      74,
+      85
+    ],
+    "coverage": "partial",
+    "notes": "Individual visible berries from both groups. Some overlap or leaf occlusion remains; hidden pixels are not reconstructed."
+  },
+  "strawberry-rotten-3083": {
+    "instances": [
+      14
+    ],
+    "coverage": "reviewed",
+    "notes": ""
+  },
+  "strawberry-rotten-3149": {
+    "instances": [
+      4,
+      8
+    ],
+    "coverage": "reviewed",
+    "notes": "Two berries separated into individual cutouts. The upper berry has a source occlusion near its leaves."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "description": "Conservative geometric filtering of severely cropped or occluded fruit candidates. This does not estimate an exact percentage of physical fruit remaining.",
+  "body_opening_fraction": 0.06,
+  "frame_outline_fraction": 0.20,
+  "frame_run_to_short_side": 0.45,
+  "missing_section_solidity": 0.78,
+  "missing_section_relative_area": 0.80,
+  "straight_cut_fraction": 0.26,
+  "straight_cut_relative_area": 0.65,
+  "sliver_relative_area": 0.28,
+  "sliver_aspect_ratio": 2.8,
+  "grape_sliver_aspect_ratio": 4.0,
+  "banana_shape_exemption": true
+}

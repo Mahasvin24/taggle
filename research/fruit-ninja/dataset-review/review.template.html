@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fruit image review · Taggle</title>
+<style>
+  :root { color-scheme: light; font-family: "Trebuchet MS", sans-serif; color: #202e3c; background: #eef3f8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  main { max-width: 1460px; margin: auto; padding: 34px 28px 60px; }
+  h1 { font-size: clamp(28px, 4vw, 44px); letter-spacing: -1.5px; margin: 0 0 12px; }
+  p { max-width: 78ch; line-height: 1.6; margin: 10px 0; }
+  a { color: #633087; text-underline-offset: 3px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 20px 0; font-weight: bold; }
+  .fresh { color: #256248; } .rotten { color: #984223; }
+  .source { font-size: 14px; color: #43566a; }
+  .controls { display: flex; align-items: end; gap: 20px; flex-wrap: wrap; padding: 22px 0; margin-top: 16px; border-top: 1px solid #c8d3df; }
+  label { display: grid; gap: 6px; font-size: 14px; }
+  select, button { font: inherit; }
+  select { padding: 10px 36px 10px 12px; border: 1px solid #9faebe; border-radius: 5px; background: white; color: inherit; }
+  :focus-visible { outline: 3px solid #723c96; outline-offset: 4px; }
+  #count { color: #43566a; margin: 0 0 10px; font-size: 14px; }
+  h2 { font-size: 25px; margin: 32px 0 14px; text-transform: capitalize; }
+  .grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+  figure { margin: 0; background: white; border-radius: 7px; overflow: hidden; }
+  .photo { display: block; width: 100%; background: white; border: 0; padding: 8px; cursor: pointer; }
+  .photo img { display: block; width: 100%; height: 208px; object-fit: contain; }
+  figcaption { padding: 12px; font-size: 14px; line-height: 1.5; }
+  .meta { color: #43566a; font-size: 12px; display: block; margin-top: 5px; }
+  .rowlink { display: inline-block; margin-top: 6px; font-size: 12px; }
+  footer { margin-top: 40px; border-top: 1px solid #c8d3df; padding-top: 20px; font-size: 13px; color: #43566a; }
+  dialog { max-width: min(1200px, 96vw); width: 96vw; max-height: 96vh; padding: 16px; border: 0; border-radius: 9px; }
+  dialog::backdrop { background: #202e3ce0; }
+  .dialogbar { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 12px; position: sticky; top: -16px; z-index: 2; background: white; padding: 8px 0; }
+  .dialogbar button { background: #eef3f8; border: 1px solid #9faebe; padding: 8px 14px; border-radius: 4px; cursor: pointer; flex-shrink: 0; }
+  #large { display: block; width: 100%; max-height: 74vh; object-fit: contain; }
+  #large.fullsize { max-height: none; width: auto; max-width: none; }
+  #detail { margin: 12px 0 0; font-size: 14px; }
+  .segment-count { display: block; margin-top: 8px; font-weight: bold; color: #633087; }
+  .viewer-layout { display: grid; grid-template-columns: minmax(230px, .85fr) minmax(320px, 1.4fr); gap: 24px; align-items: start; }
+  .viewer-layout h2 { font-size: 20px; margin: 8px 0 12px; text-transform: none; }
+  #large { max-height: 44vh; background: #eef3f8; }
+  .source-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .source-tools button { border: 1px solid #9faebe; background: #eef3f8; padding: 7px 10px; border-radius: 4px; cursor: pointer; }
+  .source-tools button[aria-pressed="true"] { background: #633087; border-color: #633087; color: white; }
+  #segmentation-note, .inherited { font-size: 14px; color: #43566a; }
+  .inherited { margin: 14px 0; padding: 10px 12px; background: #eef3f8; border-radius: 5px; }
+  .segment-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px,1fr)); gap: 12px; }
+  .segment-grid figure { border: 1px solid #c8d3df; }
+  .segment-grid .cutout { display: grid; place-items: center; height: 170px; padding: 8px; background-color: #fdfdfd; background-image: conic-gradient(#dce2e9 25%,transparent 0 50%,#dce2e9 0 75%,transparent 0); background-size: 20px 20px; }
+  .segment-grid img { max-width: 100%; height: 154px; object-fit: contain; }
+  .segment-grid .cutout.dark { background: #25313f; }
+  .segment-grid .cutout.light { background: white; }
+  .partial { color: #984223; font-size: 12px; display: block; }
+  .cutout-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 16px; }
+  .cutout-tabs button { background: #eef3f8; border: 1px solid #9faebe; border-radius: 4px; padding: 8px 10px; color: inherit; cursor: pointer; }
+  .cutout-tabs button[aria-pressed="true"] { background: #633087; border-color: #633087; color: white; }
+  .segment-grid figure.excluded { border-color: #bd7864; }
+  .exclusion-reason { display: block; margin-top: 8px; color: #883e29; font-size: 13px; line-height: 1.5; }
+  .excluded-count { display: block; color: #984223; font-size: 13px; margin-top: 3px; }
+  #excluded-section { margin-top: 26px; }
+  #excluded-heading { color: #984223; }
+  #selection-summary { font-size: 14px; }
+  #cutout-viewer img { max-width: 100%; max-height: 75vh; display: block; object-fit: contain; margin: auto; }
+  #cutout-viewer .cutout { background: repeating-conic-gradient(#dce2e9 0 25%,white 0 50%) 0 / 24px 24px; }
+  #summary { color: #43566a; }
+  @media (max-width: 760px) { .viewer-layout { grid-template-columns: minmax(0,1fr); } .viewer-layout > section:first-child { order: 2; } .viewer-layout > section:last-child { order: 1; } .segment-grid { grid-template-columns: repeat(auto-fill,minmax(130px,1fr)); } dialog { padding: 12px; } .dialogbar { top: -12px; } }
+  @media (max-width: 1150px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { main { padding: 24px 14px 40px; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .photo img { height: 170px; } }
+  @media (max-width: 360px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<main>
+  <h1>Fruit image review</h1>
+  <p>Click a photo to compare <strong>kept fruit and excluded partials</strong>. Heavily cropped fruit, thin slivers, and large missing sections are excluded from the kept count. Every candidate stays available to inspect.</p>
+  <div class="legend"><span class="fresh">Fresh fruit: collect</span><span class="rotten">Rotten fruit: slash</span></div>
+  <p class="source" id="summary"></p>
+  <p class="source">Every fruit inherits its source photo’s fresh or rotten label. These are segmentation candidates; masks and inherited labels still need review. Occluded fruit is extracted only where visible.</p>
+  <p class="source"><a href="https://data.mendeley.com/datasets/bdd69gyhv8/1" target="_blank" rel="noreferrer">Original dataset</a> &nbsp; <a href="segment-labels.csv" download>Kept labels (CSV)</a> &nbsp; <a href="segment-review.csv" download>All cutouts and decisions (CSV)</a> &nbsp; <a href="segmentation-manifest.json" download>Segmentation manifest</a> &nbsp; <a href="README.md">Review notes</a></p>
+  <div class="controls">
+    <div><label for="fruit">Fruit</label><select id="fruit"><option value="all">All eight fruits</option>__FRUIT_OPTIONS__</select></div>
+    <div><label for="state">Condition</label><select id="state"><option value="all">Fresh and rotten</option><option value="fresh">Fresh: collect</option><option value="rotten">Rotten: slash</option></select></div>
+    <div><label for="review">Show photos</label><select id="review"><option value="all">All photos</option><option value="excluded">With excluded partials</option><option value="kept">With kept fruit</option><option value="only-excluded">No kept fruit</option></select></div>
+    <p id="count" aria-live="polite"></p>
+  </div>
+  <div id="gallery"></div>
+  <footer>Photos: Nusrat Sultana, Musfika Jahan, and Mohammad Shorif Uddin (2022), “Fresh and Rotten Fruits Dataset for Machine-Based Evaluation of Fruit Quality,” Mendeley Data, V1, DOI: 10.17632/bdd69gyhv8.1. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Downloaded from the Project-AgML mirror. Previews are resized; cutouts add segmentation masks, cropping, and resizing. Originals are unchanged. <a href="manifest.json">Image provenance</a>.</footer>
+</main>
+<dialog id="viewer" aria-labelledby="viewer-title">
+  <div class="dialogbar"><strong id="viewer-title"></strong><button id="close" type="button">Close</button></div>
+  <div class="viewer-layout">
+    <section><h2>Source photo</h2>
+      <div class="source-tools"><button type="button" id="show-original" aria-pressed="true">Original</button><button type="button" id="show-overlay" aria-pressed="false">All masks</button><button type="button" id="show-kept-overlay" aria-pressed="false">Kept masks</button><button type="button" id="show-excluded-overlay" aria-pressed="false">Excluded masks</button></div>
+      <p class="source"><span class="fresh">Green: kept</span> / <span class="rotten">Orange: excluded partials</span>. Numbers match the fruit cards.</p>
+      <img id="large" alt="">
+      <p id="detail"><button type="button" id="pixels">View original pixels</button> &nbsp; <a id="original" target="_blank" rel="noreferrer">Open original file</a></p>
+      <p class="inherited" id="inherited"></p><p id="segmentation-note"></p>
+    </section>
+    <section><h2 id="cutout-heading">Fruit selection</h2>
+      <p id="selection-summary" aria-live="polite"></p>
+      <div class="cutout-tabs" role="group" aria-label="Show cutouts"><button type="button" id="view-kept" aria-pressed="false">Kept</button><button type="button" id="view-excluded" aria-pressed="false">Excluded partials</button><button type="button" id="view-both" aria-pressed="true">Both</button></div>
+      <label for="background">Cutout background</label><select id="background"><option value="checker">Checkerboard</option><option value="light">White</option><option value="dark">Dark</option></select>
+      <p class="source">Click a cutout to inspect it larger. PNG downloads have transparent backgrounds.</p>
+      <section id="kept-section"><h2 id="kept-heading">Kept fruit</h2><div class="segment-grid" id="segments"></div></section>
+      <section id="excluded-section"><h2 id="excluded-heading">Excluded partials</h2><p class="source">These cutouts are not counted or included in the kept-labels export. Each reason appears below its image.</p><div class="segment-grid" id="excluded-segments"></div></section>
+    </section>
+  </div>
+</dialog>
+<dialog id="cutout-viewer" aria-labelledby="cutout-title"><div class="dialogbar"><strong id="cutout-title"></strong><button type="button" id="close-cutout">Close cutout</button></div><p id="cutout-decision"></p><div class="cutout"><img id="cutout-large" alt=""></div><p><a id="download-cutout" download>Download transparent PNG</a></p></dialog>
+<script>
+  const rows = __ROWS__;
+  const segmentation = __SEGMENTS__;
+  const bySource = new Map(segmentation.sources.map(source => [source.source_id, source]));
+  const gallery = document.getElementById('gallery');
+  const fruit = document.getElementById('fruit');
+  const state = document.getElementById('state');
+  const review = document.getElementById('review');
+  const viewer = document.getElementById('viewer');
+  const large = document.getElementById('large');
+  const pixels = document.getElementById('pixels');
+  const cutoutViewer = document.getElementById('cutout-viewer');
+  const sourceViewButtons = ['show-original','show-overlay','show-kept-overlay','show-excluded-overlay'];
+  document.getElementById('summary').textContent = `${rows.length} source photos / ${segmentation.kept_instance_count || 0} kept fruit / ${segmentation.excluded_instance_count || 0} excluded partials`;
+  function isKept(instance) { return instance.quality?.decision !== 'excluded_partial'; }
+  function setCutoutView(mode) {
+    document.getElementById('kept-section').hidden = mode === 'excluded';
+    document.getElementById('excluded-section').hidden = mode === 'kept';
+    for (const value of ['kept','excluded','both']) document.getElementById(`view-${value}`).setAttribute('aria-pressed',String(value === mode));
+  }
+  for (const mode of ['kept','excluded','both']) document.getElementById(`view-${mode}`).onclick=()=>setCutoutView(mode);
+  function cutoutCard(instance) {
+    const number=instance.instance_number || Number(instance.id.split('-fruit-').pop());
+    const kept=isKept(instance);
+    const figure=document.createElement('figure');figure.className=kept ? 'kept' : 'excluded';
+    figure.dataset.instanceId=instance.id;
+    const button=document.createElement('button');button.type='button';button.className='photo cutout';
+    button.setAttribute('aria-label',`Enlarge ${kept ? 'kept' : 'excluded'} fruit ${number}, ${instance.state} ${instance.fruit}`);
+    const img=document.createElement('img');img.src=instance.cutout;img.alt=`Fruit ${number}: ${instance.state} ${instance.fruit}`;button.append(img);
+    button.onclick=()=>{
+      document.getElementById('cutout-title').textContent=`Fruit ${number}: ${instance.fruit} / ${instance.state}`;
+      document.getElementById('cutout-decision').textContent=kept ? 'Kept in the fruit count. Label inherited from the source photo.' : `Excluded as partial. ${instance.quality.reasons.join(' ')}`;
+      document.getElementById('cutout-large').src=instance.cutout;
+      document.getElementById('cutout-large').alt=img.alt;
+      const link=document.getElementById('download-cutout');link.href=instance.cutout;link.download=`${instance.id}.png`;
+      cutoutViewer.showModal();cutoutViewer.scrollTop=0;
+    };
+    const caption=document.createElement('figcaption');
+    const label=document.createElement('strong');label.className=instance.state;label.textContent=`Fruit ${number}: ${instance.state}`;
+    const meta=document.createElement('span');meta.className='meta';meta.textContent=`${instance.width} × ${instance.height} / ${instance.action}`;
+    const link=document.createElement('a');link.className='rowlink';link.href=instance.cutout;link.download=`${instance.id}.png`;link.textContent='Download PNG';
+    caption.append(label,meta);
+    if(!kept){const reason=document.createElement('span');reason.className='exclusion-reason';reason.textContent=instance.quality.reasons[0];caption.append(reason);}
+    else if(instance.source_edge_clipped){const flag=document.createElement('span');flag.className='meta';flag.textContent='Touches photo edge';caption.append(flag);}
+    caption.append(link);figure.append(button,caption);return figure;
+  }
+  function show(row) {
+    const source = bySource.get(row.id);
+    const instances = source?.instances || [];
+    document.getElementById('viewer-title').textContent = `${row.fruit} / ${row.state} / ${row.width} × ${row.height}`;
+    large.src = row.preview;
+    large.alt = `${row.state} ${row.fruit}, dataset row ${row.row_idx}`;
+    large.classList.remove('fullsize');
+    pixels.textContent = 'View original pixels';
+    pixels.onclick = () => {
+      const full = large.classList.toggle('fullsize');
+      large.src = full ? row.original : row.preview;
+      pixels.textContent = full ? 'Fit image to window' : 'View original pixels';
+      for(const id of sourceViewButtons) document.getElementById(id).setAttribute('aria-pressed',String(id === 'show-original'));
+    };
+    document.getElementById('original').href = row.original;
+    const sourceViews={'show-original':row.preview,'show-overlay':source?.overlay,'show-kept-overlay':source?.kept_overlay,'show-excluded-overlay':source?.excluded_overlay};
+    for(const id of sourceViewButtons){
+      const button=document.getElementById(id);button.setAttribute('aria-pressed',String(id === 'show-original'));button.disabled=!sourceViews[id];
+      button.onclick=()=>{large.src=sourceViews[id];large.classList.remove('fullsize');pixels.textContent='View original pixels';for(const other of sourceViewButtons)document.getElementById(other).setAttribute('aria-pressed',String(other === id));};
+    }
+    document.getElementById('inherited').textContent = `Source label: ${row.state}. Kept and excluded cutouts retain “${row.state}” (${row.action}).`;
+    document.getElementById('segmentation-note').textContent = source?.notes || 'Visible fruit pixels extracted with SlimSAM and visually selected. Inspect edges before using these candidates as sprites.';
+    const kept=instances.filter(isKept),excluded=instances.filter(instance=>!isKept(instance));
+    document.getElementById('cutout-heading').textContent='Fruit selection';
+    document.getElementById('selection-summary').textContent=`${kept.length} kept / ${excluded.length} excluded partial${excluded.length === 1 ? '' : 's'}. Excluded cutouts are not counted.`;
+    document.getElementById('view-kept').textContent=`Kept (${kept.length})`;
+    document.getElementById('view-excluded').textContent=`Excluded (${excluded.length})`;
+    document.getElementById('kept-heading').textContent=`${kept.length} kept fruit cutout${kept.length === 1 ? '' : 's'}`;
+    document.getElementById('excluded-heading').textContent=`${excluded.length} excluded partial${excluded.length === 1 ? '' : 's'}`;
+    for(const [id,items,emptyText] of [['segments',kept,'No cutouts from this photo pass the partial-fruit filter.'],['excluded-segments',excluded,'No cutouts were excluded as partials from this photo.']]){
+      const grid=document.getElementById(id);grid.replaceChildren(...items.map(cutoutCard));
+      if(!items.length){const empty=document.createElement('p');empty.className='source';empty.textContent=emptyText;grid.append(empty);}
+    }
+    setCutoutView('both');
+    setBackground();
+    viewer.showModal();
+    viewer.scrollTop=0;
+  }
+  function setBackground(){for(const item of document.querySelectorAll('.segment-grid .cutout')) item.className=`photo cutout ${document.getElementById('background').value}`;}
+  document.getElementById('background').onchange=setBackground;
+  function render() {
+    const selected = rows.filter(row => {
+      const source=bySource.get(row.id),kept=source?.kept_count || 0,excluded=source?.excluded_count || 0;
+      return (fruit.value === 'all' || row.fruit === fruit.value) && (state.value === 'all' || row.state === state.value) && (review.value === 'all' || (review.value === 'excluded' && excluded>0) || (review.value === 'kept' && kept>0) || (review.value === 'only-excluded' && kept===0 && excluded>0));
+    });
+    gallery.replaceChildren();
+    document.getElementById('count').textContent = `${selected.length} photos`;
+    if(!selected.length){const empty=document.createElement('p');empty.className='source';empty.textContent='No photos match these filters. Choose All photos or change the fruit and condition.';gallery.append(empty);}
+    for (const name of [...new Set(selected.map(row => row.fruit))]) {
+      const section = document.createElement('section');
+      const title = document.createElement('h2'); title.textContent = name; section.append(title);
+      const grid = document.createElement('div'); grid.className = 'grid'; section.append(grid);
+      for (const row of selected.filter(row => row.fruit === name)) {
+        const figure = document.createElement('figure');
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'photo';
+        button.setAttribute('aria-label', `Inspect ${row.state} ${row.fruit}, row ${row.row_idx}`);
+        const img = document.createElement('img'); img.src = row.preview; img.alt = `${row.state} ${row.fruit}`; img.loading = 'lazy';
+        button.append(img); button.onclick = () => show(row); figure.append(button);
+        const caption = document.createElement('figcaption');
+        const label = document.createElement('strong'); label.className = row.state;
+        label.textContent = `${row.state === 'fresh' ? 'Fresh' : 'Rotten'}: ${row.action}`;
+        const meta = document.createElement('span'); meta.className = 'meta'; meta.textContent = `${row.width} × ${row.height} / Row ${row.row_idx}`;
+        const link = document.createElement('a'); link.className = 'rowlink'; link.href = row.row_url; link.target = '_blank'; link.rel = 'noreferrer'; link.textContent = 'Dataset record';
+        const source=bySource.get(row.id);
+        const count=document.createElement('span');count.className='segment-count';count.textContent=`${source?.kept_count || 0} kept fruit`;
+        const excluded=document.createElement('span');excluded.className='excluded-count';excluded.textContent=`${source?.excluded_count || 0} excluded partials`;
+        caption.append(label, meta, link, count, excluded); figure.append(caption); grid.append(figure);
+      }
+      gallery.append(section);
+    }
+  }
+  fruit.onchange = state.onchange = review.onchange = render;
+  document.getElementById('close').onclick = () => viewer.close();
+  document.getElementById('close-cutout').onclick = () => cutoutViewer.close();
+  render();
+</script>
+</html>
