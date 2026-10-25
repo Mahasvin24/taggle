@@ -1,0 +1,28 @@
+{
+  "model": "sklearn.ensemble.GradientBoostingClassifier",
+  "parameters": {
+    "n_estimators": 80,
+    "learning_rate": 0.05,
+    "max_depth": 2,
+    "min_samples_leaf": 3,
+    "subsample": 1.0,
+    "random_state": 20261024
+  },
+  "primary_endpoint": "Source-photo-balanced reference accuracy (mean class recall, equal photo weight within class)",
+  "validation": "Leave-one-reference-source-photo-out, train on eligible target consensus only; exclude entire held-out photo by SHA-256",
+  "label_rule": "One row per unique asset; strict vote majority; exclude ties; no vote-count sample weighting",
+  "training_weight_rule": "Equal class weight and equal source-photo weight within class",
+  "features": "Fixed alpha-masked RGB/HSV distributions and local texture; no type, ID, label, player, filename or source metadata",
+  "threshold": 0.5,
+  "seed": 20261024,
+  "bootstrap_iterations": 4000,
+  "comparators": {
+    "gameplay": "Gameplay labels \u00b7 gradient boosting",
+    "always_healthy": "Always healthy",
+    "fruit_type": "Fruit-type-only baseline",
+    "source_label": "Same images \u00b7 source-photo labels (diagnostic)",
+    "reference": "Reference controls \u00b7 gradient boosting (diagnostic)"
+  },
+  "hyperparameter_search": false,
+  "reference_limit": "Controls are source-inherited, visually reviewed pilot references; not independent expert truth"
+}

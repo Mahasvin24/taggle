@@ -1,0 +1,269 @@
+{
+  "created_at_utc": "2026-10-25T00:15:16.045392+00:00",
+  "snapshot_sha256": "608efbe30dbee0a0a92578b0ff0f1bfe407c3f6691526c6405bf50e4a827bddc",
+  "python": "3.13.1",
+  "sklearn": "1.9.1",
+  "numpy": "2.5.4",
+  "eligible_votes": 80,
+  "unique_voted_cutouts": 72,
+  "tied_assets": [
+    "228792ab5acc5eeea8adff5fb8d668fb",
+    "32c963bd6a41556d93f363792a4b3bf1",
+    "469e057276005218b5a1fffe943e53b4",
+    "8f747847d65a574298bb814bc00cf2e6"
+  ],
+  "training_cutouts": 68,
+  "training_photos": 26,
+  "training_class_counts": {
+    "healthy": 48,
+    "rotten": 20
+  },
+  "test_reference_cutouts": 91,
+  "test_reference_photos": 28,
+  "test_class_counts": {
+    "fresh": 52,
+    "rotten": 39
+  },
+  "reference_results_by_fruit": {
+    "apple": {
+      "cutouts": 10,
+      "photos": 5,
+      "healthy": 8,
+      "rotten": 2,
+      "accuracy": 0.6,
+      "rotten_recall": 0.0
+    },
+    "banana": {
+      "cutouts": 6,
+      "photos": 3,
+      "healthy": 4,
+      "rotten": 2,
+      "accuracy": 0.6666666666666666,
+      "rotten_recall": 0.5
+    },
+    "grape": {
+      "cutouts": 26,
+      "photos": 6,
+      "healthy": 18,
+      "rotten": 8,
+      "accuracy": 0.8846153846153846,
+      "rotten_recall": 0.875
+    },
+    "guava": {
+      "cutouts": 4,
+      "photos": 4,
+      "healthy": 2,
+      "rotten": 2,
+      "accuracy": 0.75,
+      "rotten_recall": 0.5
+    },
+    "jujube": {
+      "cutouts": 3,
+      "photos": 1,
+      "healthy": 3,
+      "rotten": 0,
+      "accuracy": 1.0,
+      "rotten_recall": null
+    },
+    "orange": {
+      "cutouts": 3,
+      "photos": 3,
+      "healthy": 1,
+      "rotten": 2,
+      "accuracy": 0.3333333333333333,
+      "rotten_recall": 0.0
+    },
+    "pomegranate": {
+      "cutouts": 3,
+      "photos": 3,
+      "healthy": 1,
+      "rotten": 2,
+      "accuracy": 0.3333333333333333,
+      "rotten_recall": 0.5
+    },
+    "strawberry": {
+      "cutouts": 36,
+      "photos": 3,
+      "healthy": 15,
+      "rotten": 21,
+      "accuracy": 0.6111111111111112,
+      "rotten_recall": 0.7142857142857143
+    }
+  },
+  "feature_count": 57,
+  "source_photo_overlap_per_fold": 0,
+  "model_results": {
+    "gameplay": {
+      "accuracy": 0.6923076923076923,
+      "balanced_accuracy": 0.6858974358974359,
+      "photo_balanced_accuracy": 0.5532051282051281,
+      "rotten_recall": 0.6410256410256411,
+      "healthy_recall": 0.7307692307692307,
+      "macro_f1": 0.6858974358974359,
+      "roc_auc": 0.7204142011834319,
+      "confusion_matrix": [
+        [
+          38,
+          14
+        ],
+        [
+          14,
+          25
+        ]
+      ],
+      "photo_balanced_accuracy_ci95": [
+        0.3897435897435898,
+        0.7153846153846153
+      ]
+    },
+    "always_healthy": {
+      "accuracy": 0.5714285714285714,
+      "balanced_accuracy": 0.5,
+      "photo_balanced_accuracy": 0.5,
+      "rotten_recall": 0.0,
+      "healthy_recall": 1.0,
+      "macro_f1": 0.36363636363636365,
+      "roc_auc": 0.5,
+      "confusion_matrix": [
+        [
+          52,
+          0
+        ],
+        [
+          39,
+          0
+        ]
+      ],
+      "photo_balanced_accuracy_ci95": [
+        0.5,
+        0.5
+      ]
+    },
+    "fruit_type": {
+      "accuracy": 0.38461538461538464,
+      "balanced_accuracy": 0.34294871794871795,
+      "photo_balanced_accuracy": 0.4897435897435897,
+      "rotten_recall": 0.05128205128205128,
+      "healthy_recall": 0.6346153846153846,
+      "macro_f1": 0.3038251366120219,
+      "roc_auc": 0.31065088757396453,
+      "confusion_matrix": [
+        [
+          33,
+          19
+        ],
+        [
+          37,
+          2
+        ]
+      ],
+      "photo_balanced_accuracy_ci95": [
+        0.34615384615384615,
+        0.6282051282051282
+      ]
+    },
+    "source_label": {
+      "accuracy": 0.7582417582417582,
+      "balanced_accuracy": 0.7596153846153846,
+      "photo_balanced_accuracy": 0.6971153846153846,
+      "rotten_recall": 0.7692307692307693,
+      "healthy_recall": 0.75,
+      "macro_f1": 0.7558536585365854,
+      "roc_auc": 0.6903353057199212,
+      "confusion_matrix": [
+        [
+          39,
+          13
+        ],
+        [
+          9,
+          30
+        ]
+      ],
+      "photo_balanced_accuracy_ci95": [
+        0.5282051282051282,
+        0.8467948717948718
+      ]
+    },
+    "reference": {
+      "accuracy": 0.8021978021978022,
+      "balanced_accuracy": 0.8044871794871795,
+      "photo_balanced_accuracy": 0.7897435897435898,
+      "rotten_recall": 0.8205128205128205,
+      "healthy_recall": 0.7884615384615384,
+      "macro_f1": 0.8002439024390244,
+      "roc_auc": 0.8920118343195266,
+      "confusion_matrix": [
+        [
+          41,
+          11
+        ],
+        [
+          7,
+          32
+        ]
+      ],
+      "photo_balanced_accuracy_ci95": [
+        0.6474198717948717,
+        0.9128205128205129
+      ]
+    }
+  },
+  "gameplay_minus_comparator_photo_accuracy_ci95": {
+    "always_healthy": [
+      -0.1102564102564102,
+      0.21538461538461529
+    ],
+    "fruit_type": [
+      -0.1397435897435897,
+      0.2621794871794872
+    ],
+    "source_label": [
+      -0.33173076923076916,
+      0.049358974358974295
+    ],
+    "reference": [
+      -0.4019230769230769,
+      -0.07432692307692292
+    ]
+  },
+  "qualified_control_agreement": {
+    "n": 80,
+    "correct": 68,
+    "accuracy": 0.85,
+    "balanced_accuracy": 0.85,
+    "photo_balanced_accuracy": 0.910180995475113,
+    "rotten_recall": 0.825,
+    "healthy_recall": 0.875,
+    "macro_f1": 0.849906191369606,
+    "roc_auc": 0.85,
+    "confusion_matrix": [
+      [
+        35,
+        5
+      ],
+      [
+        7,
+        33
+      ]
+    ]
+  },
+  "target_vote_source_agreement": {
+    "correct": 52,
+    "n": 80
+  },
+  "target_consensus_source_agreement": {
+    "correct": 45,
+    "n": 68
+  },
+  "target_source_disagreement_by_source_class": {
+    "fresh": {
+      "n": 39,
+      "disagree": 7
+    },
+    "rotten": {
+      "n": 29,
+      "disagree": 16
+    }
+  }
+}
