@@ -4,11 +4,12 @@ import FruitNinja from "./fruit-ninja/game";
 export const games = [
   {
     slug: "fruit-ninja",
-    title: "Fruit Ninja",
-    description: "A fruity twist on data labeling. Tell fresh fruit from spoiled fruit.",
+    title: "Fruit Shift",
+    description:
+      "Slice rotten fruit. Let healthy fruit fly. Build a dataset, one shift at a time.",
     icon: "🍎",
-    previewLabel: "Fresh or spoiled?",
-    status: "Coming soon",
+    previewLabel: "Healthy or rotten?",
+    status: "Play now",
     component: FruitNinja,
   },
 ];
