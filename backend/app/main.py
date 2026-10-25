@@ -1,12 +1,23 @@
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
-
-from app.games.fruit_ninja.router import router as fruit_ninja_router
-
-app = FastAPI(title="Taggle API", version="0.1.0")
-
-app.include_router(fruit_ninja_router)
+from app.games.fruit_ninja.db import Store
+from app.games.fruit_ninja.router import router
 
 
-@app.get("/api/health", tags=["health"])
-def health() -> dict[str, str]:
-    return {"status": "ok"}
+def create_app(database_path=None):
+    @asynccontextmanager
+    async def lifespan(app):
+        app.state.fruit_store = Store(database_path)
+        yield
+
+    app = FastAPI(title="Taggle API", version="0.2.0", lifespan=lifespan)
+    app.include_router(router)
+
+    @app.get("/api/health")
+    def health():
+        return {"status": "ok"}
+
+    return app
+
+
+app = create_app()

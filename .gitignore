@@ -19,3 +19,9 @@ next-env.d.ts
 
 # Logs
 *.log
+
+# Local Fruit Shift player data
+backend/*.db
+backend/*.db-wal
+backend/*.db-shm
+backend/*.db-journal
